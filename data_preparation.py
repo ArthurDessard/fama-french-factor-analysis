@@ -22,7 +22,8 @@ ff_url = "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Resear
 zip_file_path, _ = urllib.request.urlretrieve(ff_url)
 
 with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-    csv_file_name = [name for name in zip_ref.namelist() if name.upper().endswith('.CSV')][0]
+    csv_file_name = [name for name in zip_ref.namelist(
+    ) if name.upper().endswith('.CSV')][0]
     with zip_ref.open(csv_file_name) as csv_file:
         df_ff = pd.read_csv(csv_file, skiprows=4)
 
